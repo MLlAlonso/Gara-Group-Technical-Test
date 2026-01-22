@@ -1,0 +1,236 @@
+/* ===============================
+   VARIABLES
+================================ */
+$orange: #DF703D;
+$dark: #1C222D;
+$gray-mid: #2D3442;
+$gray-light: #98989A;
+$max-width: 1300px;
+$blue: #0F152C;
+
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-bold: 700;
+$font-extra-bold: 800;
+
+
+/* ===============================
+   BASE
+================================ */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: $dark;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===============================
+   HEADER
+================================ */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: $dark;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  .header-inner {
+    @extend .container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a,
+  .signin {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  &.scrolled {
+    background: $dark;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+    nav a,
+    .signin {
+      color: white;
+    }
+  }
+}
+
+/* ===============================
+   HERO
+================================ */
+.hero {
+  padding-top: 120px;
+  text-align: center;
+
+  .container {
+    max-width: 1300px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: $dark;
+  }
+
+  p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 32px;
+    color: $gray-mid;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 36px;
+    border-radius: 30px;
+    border: 2px solid $orange;
+    color: $orange;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      background: $orange;
+      color: white;
+    }
+  }
+
+  img {
+    width: 85%;
+    height: 340px;
+    object-fit: cover;
+    margin-top: 64px;
+    border-radius: 20px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2000;
+  font-family: 'Montserrat', sans-serif;
+
+  &.active {
+    display: block;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    text-align: center;
+    z-index: 2100;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: $dark;
+      font-weight: $font-bold;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: $gray-mid;
+    }
+
+    .modal-cta {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: $orange;
+      color: white;
+      font-weight: $font-bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: darken($orange, 10%);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $gray-light;
+
+      &:hover {
+        color: $dark;
+      }
+    }
+  }
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  header nav {
+    display: none; // luego menú móvil
+  }
+
+  .hero {
+    h1 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+@import "components/products";
+@import "components/features";
+@import "components/team";
+@import "components/footer";
+
+
+body { font-weight: $font-medium; }
+h1 { font-weight: $font-extra-bold; }
+h2 { font-weight: $font-bold; }
+h3 { font-weight: $font-semi-bold; }

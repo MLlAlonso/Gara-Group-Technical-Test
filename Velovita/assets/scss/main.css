@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Opcional: estilos globales */
+body {
+  font-family: "Montserrat", sans-serif;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,101 @@
+.team {
+  padding: 120px 0;
+  background: $blue;
+
+  .team-layout {
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* LEFT */
+  .team-content {
+    h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .team-text {
+      font-size: 18px;
+      color: $gray-light;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .team-link {
+      font-size: 16px;
+      color: $orange;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  }
+
+  /* RIGHT */
+  .team-carousel {
+    position: relative;
+    overflow: hidden;
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    img {
+      min-width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $gray-light;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &.active {
+        background: $orange;
+      }
+    }
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .team {
+    .team-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .team-carousel img {
+      height: 300px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .team {
+    padding: 80px 0;
+
+    .team-carousel img {
+      height: 240px;
+    }
+
+    .team-content {
+      text-align: center;
+    }
+  }
+}
