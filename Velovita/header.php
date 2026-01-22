@@ -4,6 +4,9 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <?php wp_head(); ?>
 </head>
+
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/main.js?ver=<?php echo time(); ?>"></script>
+
 <body <?php body_class(); ?>>
 
 <header>
