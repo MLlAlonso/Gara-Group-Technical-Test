@@ -25,12 +25,17 @@
 <?php get_footer(); ?>
 
 <!-- MODAL -->
+<!-- MODAL -->
 <div id="promo-modal" class="modal">
   <div class="modal-overlay"></div>
+
   <div class="modal-content">
     <button class="modal-close">&times;</button>
-    <h2>Join the Velovita® Community!</h2>
-    <p>Sign up today and start earning rewards, enjoying wellness tips, and connecting with like-minded people.</p>
-    <a href="https://velovita.com/join" class="modal-cta">Get Started</a>
+
+    <h2>Contact Velovita®</h2>
+    <p>Have questions or want to know more? Send us a message.</p>
+
+    <?php get_template_part('template-parts/contact'); ?>
   </div>
 </div>
+

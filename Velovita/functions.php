@@ -51,17 +51,58 @@ function velovita_testimonials_cpt() {
 }
 add_action('init', 'velovita_testimonials_cpt');
 
+
+// CPT: Inquiries
+function velovita_inquiries_cpt() {
+    register_post_type('inquiry', [
+        'labels' => [
+            'name' => 'Inquiries',
+            'singular_name' => 'Inquiry',
+        ],
+        'public' => false,
+        'show_ui' => true,
+        'menu_icon' => 'dashicons-email',
+        'supports' => ['title', 'editor'],
+    ]);
+}
+add_action('init', 'velovita_inquiries_cpt');
+
+
 function velovita_handle_contact_form() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cf_email'])) {
-        $name = sanitize_text_field($_POST['cf_name']);
-        $email = sanitize_email($_POST['cf_email']);
-        $message = sanitize_textarea_field($_POST['cf_message']);
 
-        // Enviar correo al admin
-        wp_mail(get_option('admin_email'), "New contact from $name", $message, ["From: $email"]);
-
-        // Opcional: enviar confirmación al usuario
-        wp_mail($email, "Thanks for contacting Velovita", "Hi $name, we received your message. We'll reach out soon!", ["From: " . get_option('admin_email')]);
+    if (
+        $_SERVER['REQUEST_METHOD'] !== 'POST' ||
+        !isset($_POST['cf_email']) ||
+        !wp_verify_nonce($_POST['velovita_contact_nonce'], 'velovita_contact')
+    ) {
+        return;
     }
+
+    $name = sanitize_text_field($_POST['cf_name']);
+    $email = sanitize_email($_POST['cf_email']);
+    $message = sanitize_textarea_field($_POST['cf_message']);
+
+    // Guardar en WP Admin
+    wp_insert_post([
+        'post_type' => 'inquiry',
+        'post_title' => $name . ' – ' . $email,
+        'post_content' => $message,
+        'post_status' => 'publish',
+    ]);
+
+    // Email al admin
+    wp_mail(
+        get_option('admin_email'),
+        'New Inquiry – Velovita',
+        "Name: $name\nEmail: $email\n\n$message"
+    );
+
+    // Email al usuario (BONUS)
+    wp_mail(
+        $email,
+        'We received your message',
+        "Hi $name,\n\nThanks for contacting Velovita. We’ll get back to you shortly."
+    );
 }
 add_action('init', 'velovita_handle_contact_form');
+

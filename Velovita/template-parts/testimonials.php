@@ -12,15 +12,25 @@
 
       if ($testimonial_query->have_posts()) :
           while ($testimonial_query->have_posts()) : $testimonial_query->the_post(); ?>
+              
               <div class="testimonial-item">
-                  <?php if (has_post_thumbnail()) : ?>
-                      <div class="testimonial-img">
+
+                  <div class="testimonial-img">
+                      <?php if (has_post_thumbnail()) : ?>
                           <?php the_post_thumbnail('thumbnail'); ?>
-                      </div>
-                  <?php endif; ?>
+                      <?php else : ?>
+                          <img
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
+                            alt="Velovita logo"
+                          />
+                      <?php endif; ?>
+                  </div>
+
                   <h3><?php the_title(); ?></h3>
                   <p><?php the_content(); ?></p>
+
               </div>
+
           <?php endwhile;
           wp_reset_postdata();
       else : ?>

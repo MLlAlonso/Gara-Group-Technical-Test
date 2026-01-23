@@ -47,7 +47,7 @@
       color: $gray-mid;
       margin-bottom: 40px;
 
-      span{
+      span {
         color: $orange;
         font-weight: 600;
       }
@@ -97,10 +97,6 @@
 ================================ */
 @media (max-width: 1024px) {
   .features {
-    .features-layout {
-      grid-template-columns: 1fr;
-    }
-
     .features-images {
       height: 360px;
     }
@@ -109,33 +105,54 @@
 
 @media (max-width: 640px) {
   .features {
-    padding: 80px 0;
+    padding: 80px 24px;
+    gap: 60px;
 
-    .features-images {
-      grid-template-columns: 1fr;
-      height: auto;
+    .features-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
 
-      .image-large {
-        grid-row: auto;
-        height: 260px;
+      .features-images {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 16px;
+
+        .image-large {
+          grid-row: auto;
+          height: auto;
+        }
+
+        .image-stack {
+          grid-template-rows: auto;
+          gap: 16px;
+
+          img {
+            width: 100%;
+            height: auto; // importante para mantener proporción
+          }
+        }
+
+        img {
+          width: 100%;
+          height: auto; // asegurarse de que no se sobreponga
+          object-fit: cover;
+          border-radius: 16px;
+        }
       }
 
-      .image-stack {
-        grid-template-rows: auto;
-        img {
-          height: 180px;
+      .features-content {
+        h2 {
+          font-size: 26px;
+        }
+
+        .features-intro {
+          font-size: 16px;
+          margin-bottom: 32px;
         }
       }
     }
 
-    .features-content {
-      h2 {
-        font-size: 26px;
-      }
 
-      .features-intro {
-        font-size: 16px;
-      }
-    }
   }
 }
