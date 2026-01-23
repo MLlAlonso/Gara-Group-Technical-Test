@@ -603,6 +603,81 @@ header.scrolled .signin {
     flex-direction: column;
   }
 }
+/* ===============================
+   TESTIMONIALS
+================================ */
+.testimonials {
+  padding: 80px 0;
+  background: #f8f9fb;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  color: #1C222D;
+  margin-bottom: 48px;
+  font-weight: 700;
+}
+.testimonials .testimonials-list {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.testimonials .testimonials-list .testimonial-item {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 320px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonials .testimonials-list .testimonial-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.testimonials .testimonials-list .testimonial-item .testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.testimonials .testimonials-list .testimonial-item .testimonial-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testimonials .testimonials-list .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C222D;
+  margin-bottom: 12px;
+}
+.testimonials .testimonials-list .testimonial-item p {
+  font-size: 16px;
+  color: #2D3442;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 60px 16px;
+  }
+  .testimonials .testimonials-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .testimonials .testimonials-list .testimonial-item {
+    max-width: 90%;
+  }
+}
 body {
   font-weight: 500;
 }

@@ -20,6 +20,8 @@
 
 <?php get_template_part('template-parts/team'); ?>
 
+<?php get_template_part('template-parts/testimonials'); ?>
+
 <?php get_footer(); ?>
 
 <!-- MODAL -->
